@@ -1,0 +1,9 @@
+.reveal h1, .reveal h2 {
+	text-transform: none;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -1,0 +1,93 @@
+/*.flex-parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}*/
+
+/*.flex-child {
+    flex-grow: 1;
+    flex-basis: 43%;
+}*/
+
+/*@media only screen and (max-width: 40em) {
+    .flex-child {
+        width:100%
+    }
+}*/
+
+/* Flex properties above, other styles below */
+
+.flex-child {
+    padding: 0.75em;
+    width: 45.75%;
+    min-height: 100px;
+	display: block;
+	position: relative;
+	margin: 0.75em;
+	border: 1px solid #CCCCCC;
+	border-radius: 3px;
+	background-color: #FFFFFF;
+	font-family: Lato;
+}
+
+.flex-child::after {
+    clear: both;
+    content: "";
+    display: table
+}
+
+blockquote {
+    float: right;
+    margin-left: 33%;
+    color: #555;
+}
+
+@media only screen and (max-width: 64em) {
+    blockquote {
+        float:none;
+        margin-left: 0;
+        margin-bottom: 6em
+    }
+}
+
+.logo, .count {
+	position: absolute;
+    top: 0.75em;
+    left: 0.75em;
+    max-width: 40%;
+    max-height: 4em
+}
+
+@media only screen and (max-width: 64em) {
+    .logo, .count {
+        top:auto;
+        bottom: 1.5em;
+        max-width: 50%;
+        max-height: 2.5em
+    }
+}
+
+.count {
+	font-size: 150%;
+	font-weight: bold;
+	display: inline-block;
+	border-radius: 50%;
+	background-color: #369;
+	padding: 20px;
+	color: white;
+}
+
+.tag {
+	display: inline-block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 9em;
+	padding: 1px 0;
+	background-color: #333;
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: bold;
+	line-height: 1;
+}
