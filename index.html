@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Intro to Flexbox</title>
+		<title>Flexbox Fun</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/white.css">
@@ -25,13 +25,11 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>
-					<h1>Intro to Flexbox</h1>
+				<section data-background-image="images/tetris-black.jpg">
+					<h1 style="color:white; position: relative; top: -200px;">Intro to Flexbox</h1>
 					<aside class="notes">
 						<ul>
-							<li>Who here does front end, backend? Anyone who doesn’t develop for the web?</li>
-							<li>This talk is web-specific so feel free to step out if it you don’t find this relevant</li>
-							<li>Questions? Please find me after the CoderSpace talk which is immediately after this one</li>
+							<li>Who here has used flexbox in production?</li>
 						</ul>
 					</aside>
 				</section>
@@ -51,161 +49,14 @@
 						</div>
 					</div>
 				</section>
-				<section>
-					<h1>What is Flexbox?</h1>
+				<section data-background-image="images/tetris.jpg">
+					<h1 style="position: relative; top: -200px;">What is Flexbox?</h1>
 					<aside class="notes">
 						<ul>
 							<li>A CSS layout model</li>
 							<li>allows child elements of a container to be laid out vertically or horizontally</li>
 							<li>allows the child elements to shrink or grow (“flex”) their size based on unused space</li>
-							<li>Should be used for components, not whole page layouts (for which you might use the new grid properties)</li>
-						</ul>
-					</aside>
-				</section>
-				<section  data-background-video="videos/hiring-flex-resources.mp4" data-background-video-loop data-background-video-muted>
-					<aside class="notes">
-						See the Resources and Featured Customer areas of hiring.careerbuilder.com. Both use flexbox.
-					</aside>
-				</section>
-				<section data-background-image="images/resource-grid.png" >
-					<aside class="notes">
-					Here I've used mixins from the Bourbon CSS library that add vendor prefixes and older flexbox properties in addition to the modern properties.</aside>
-				</section>
-				<section>
-					<pre><code class="css">
-.resource-grid {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-@media only screen and (max-width: 40em) {
-  .resource-grid {
-    flex-wrap: nowrap;
-    flex-direction: column;
-  }
-}
-					</code></pre>
-					<aside class="notes">
-						Here is the simplified code
-						<ul>
-							<li>display flex creates our flex layout</li>
-							<li>flex-wrap: wrap lets our content flow into multiple lines when needed</li>
-							<li>flex-direction: row sets our items in a row, then in our small-screen media query we set our items into a column and do not allow it to wrap</li>
-							<li>This is all set on our parent element</li>
-						</ul>
-					</aside>
-				</section>
-				<section>
-					<pre><code class="css">
-.resource-block {
-  flex: 1;
-}
-
-@media only screen and (max-width: 64em) {
-  .resource-block {
-    flex: 1 0 46%;
-  }
-}
-
-@media only screen and (max-width: 40em) {
-  .resource-block {
-    flex: 1;
-  }
-}
-					</code></pre>
-					<aside class="notes">
-						<ul>
-							<li>On our child elements, or flex-children, we are using the flex property to dictate the target size for each item and how much they can shrink or grow</li>
-							<li>flex: 1 is a shorthand that means elements have a 1:1 size ratio to each other, they should grow/shrink/target the same amount of space</li>
-							<li>flex: 1 0 46% means the items can grow and absorb any additional space, cannot shrink (0), and should have a target size of at least 46%</li>
-						</ul>
-					</aside>
-				</section>
-				<section  data-background-video="videos/hiring-flex-featured.mp4" data-background-video-loop data-background-video-muted>
-					<aside class="notes">
-						Here we're looking at the HTML for the featured customer area which is a little more complex
-						<ul>
-							<li>There is a .logo-grid flex parent around the entire area</li>
-							<li>The large box is given about 33% of space and stretches to the height of the small box area</li>
-							<li>the small box area has it's own flex-parent wrapper and the small boxes inside are flex children that maintain a uniform height and width</li>
-						</ul>
-					</aside>
-				</section>
-				<section>
-						<pre><code class="css">
-.logo-grid {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-}
-
-@media only screen and (max-width: 40em) {
-  .logo-grid {
-    flex-direction: column;
-  }
-}
-						</code></pre>
-						<aside class="notes">
-							<ul>
-								<li>Children are the large box and the box that wraps the smaller boxes</li>
-							</ul>
-						</aside>
-				</section>
-				<section>
-						<pre><code class="css">
-.logo-grid__testimonial--large {
-  min-width: 30%;
-  max-width: 33%;
-}
-
-@media only screen and (min-width: 40em) {
-  .logo-grid__testimonial--large {
-    flex-basis: 31.5%;
-  }
-}
-						</code></pre>
-				</section>
-				<section>
-					<pre>
-						<code class="css">
-.logo-grid__mini-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
-}
-
-.logo-grid__testimonial--mini {
-  width: 45.75%;
-  flex-grow: 1;
-}
-
-@media only screen and (max-width: 64em) {
-  .logo-grid__testimonial--mini {
-    width:43%
-  }
-}
-
-@media only screen and (min-width: 40em) {
-  .logo-grid__testimonial--mini {
-    flex-basis: 43%;
-  }
-}
-
-@media only screen and (max-width: 40em) {
-  .logo-grid__testimonial--mini {
-    width:100%
-  }
-}
-						</code>
-					</pre>
-					<aside class="notes">
-						<ul>
-							<li>Tried table and bourbon/neat grid but felt like I had to right new declarations to override the built in rules and my code was messy and ultimately it wouldn’t give me equal width/height boxes regardless of the amount of text
-
-dont want to use grid because i want to reclaim more of the margin space for my content, in this case i need the space, but I don't want to guess and check for how much margin and box size i need, flexbox can just rearrange margins while I focus on content size
-</li>
+							<li>Should be used for components and content driven arrangements, not whole page layouts (for which you might use the new grid properties)</li>
 						</ul>
 					</aside>
 				</section>
@@ -220,7 +71,6 @@ dont want to use grid because i want to reclaim more of the margin space for my 
 					</ul>
 					<aside class="notes">
 						There are ways to achieve these results with traditional CSS but they are hacks. Flexbox gives us a straightforward way to meet these ends. If after listening to this talk you’re still not quite ready to go full force with flexbox check out Flexbox without Flexbox.
-
 					</aside>
 				</section>
 				<section class="large-text">
@@ -238,7 +88,15 @@ dont want to use grid because i want to reclaim more of the margin space for my 
 				</section>
 				<section>
 					<h1>Demo</h1>
-					<a href="https://github.com/arelia/flex-talk/tree/master/example_files">https://github.com/arelia/flex-talk/tree/master/example_files</a>
+					<a href="http://codepen.io/arelia/pen/Vjaxqj?editors=0100">
+						<img src="images/cs-flex.png" alt="" />
+					</a>
+					<aside class="notes">
+						<ul>
+							<li>display flex, flex-wrap wrap, justify-content center</li>
+							<li>no media queries on the students, it's auto responsive</li>
+						</ul>
+					</aside>
 				</section>
 				<section class="large-text">
 					<h1>Flex Parent Properties</h1>
@@ -325,7 +183,14 @@ dont want to use grid because i want to reclaim more of the margin space for my 
 						Supported by all modern browsers
 					</aside>
 				</section>
-				<section data-background-image="images/flex-ie8.png" data-background-size="contain">
+				<section>
+					<img src="images/cb-flex.png" alt="" />
+					<aside class="notes">
+						With browser prefixes and including old properties you can acheive graceful degredation without using a polyfil such as flexibility
+					</aside>
+				</section>
+				<section>
+					<img src="images/flex-ie8.png" alt="" />
 					<aside class="notes">
 						With browser prefixes and including old properties you can acheive graceful degredation without using a polyfil such as flexibility
 					</aside>
@@ -342,17 +207,8 @@ https://kyusuf.com/post/almost-complete-guide-to-flexbox-without-flexbox<br><br>
 <strong>Rachel Andrew:</strong> https://rachelandrew.co.uk/<br>
 <strong>Jen Simmons:</strong> http://jensimmons.com/
 				</section>
-				<section>
-					<h1>Chicago HTML5 Meetup</h1>
-					<h2>Tuesday, June 14 @ 6:00pm</h2>
-					<h2>Enova</h2>
-				</section>
-				<section>
-					<h1>Lunch and Learn – Teaching in the Cloud</h1>
-					<h2>Room 621</h2>
-				</section>
-				<section>
-					<h1>Thank You</h1>
+				<section data-background-image="images/tetris.jpg">
+					<h1 style="position: relative; top: -200px;">Thank You</h1>
 				</section>
 			</div>
 		</div>
