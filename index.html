@@ -26,10 +26,12 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-background-image="images/tetris-black.jpg">
-					<h1 style="color:white; position: relative; top: -200px;">Intro to Flexbox</h1>
+					<h1 style="color:white; position: relative; top: -200px;">Flexbox Demos</h1>
 					<aside class="notes">
 						<ul>
 							<li>Who here has used flexbox in production?</li>
+							<li>Who's not very familiar with flexbox/hasn't used it?</li>
+							<li>There will be resources</li>
 						</ul>
 					</aside>
 				</section>
@@ -64,7 +66,7 @@
 					<h1>What is it good for?</h1>
 					<ul>
 						<li>Dynamic content</li>
-						<li>Responsive layouts</li>
+						<li>Responsive (component) layouts</li>
 						<li>Uniform height/width across elements</li>
 						<li>(Easy) Vertical centering</li>
 						<li>Changing order</li>
@@ -93,8 +95,39 @@
 					</a>
 					<aside class="notes">
 						<ul>
+							<li><strong>CoderSpace Roster - intro demo</strong></li>
 							<li>display flex, flex-wrap wrap, justify-content center</li>
 							<li>no media queries on the students, it's auto responsive</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<h1>Demo</h1>
+					<a href="https://hiring.careerbuilder.com">
+						<img src="images/cb-mobile-flex.png" alt="" />
+					</a>
+					<aside class="notes">
+						<ul>
+							<li><strong>CB Mobile - Flexbox hacks</strong></li>
+							<li>uses spacer element that flexes to take the left over space</li>
+							<li>since i implemented flex for the spacer, considering using order to change position of secondary nav so I can reuse that markup as buttons</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<h1>Demo</h1>
+					<a href="https://github.com/arelia/outing-org/tree/talk-example">
+						<img src="images/outing-flex.png" alt="" />
+					</a>
+					<aside class="notes">
+						<ul>
+							<li><strong>Outing Organizer - Flex order</strong></li>
+							<li>nested flex items</li>
+							<li>the items are flex contexts where the children (info and thumbnail image) are flex basis 50% and in rows and not wrapping</li>
+							<li>the item wrapper is a flex context with flex-direction row, flex wrap wrap</li>
+							<li>for large viewport view image is positioned to the right using order to put it in the second spot, even though in source order the image comes first</li>
+							<li>for mobile the image is in top spot using order again, item content and items themselves are in columns - very little code to change the layouts, no floats and no clearfixes</li>
+							<li>gives you control over diplay separate from source order</li>
 						</ul>
 					</aside>
 				</section>
